@@ -7153,9 +7153,9 @@ local function booleantonumber(boolean)
     return 0
 end
 
-local function solid(x,y,elemtype)
-    x = x or 0
-    y = y or 0
+local function solid(posx,posy,elemtype)
+    local x = posx or 0
+    local y = posy or 0
     x = clamp(x,4,sim.XRES-5)
     y = clamp(y,4,sim.YRES-5)
     elemtype = elemtype or 0
@@ -7169,7 +7169,9 @@ local function solid(x,y,elemtype)
             end
         end
     end
-    local wallx, wally = math.floor((x+1)/sim.CELL),math.floor((y+1)/sim.CELL)
+    local x,y = posx or 0, posy or 0
+    x,y = clamp(x,3,sim.XRES-4),clamp(y,3,sim.YRES-4)
+    local wallx, wally = math.floor(x/sim.CELL),math.floor(y/sim.CELL)
     local walltype, wallflag = tpt.get_wallmap(wallx, wally), tpt.get_elecmap(wallx, wally)
     if walltype == 1 then
         return true
