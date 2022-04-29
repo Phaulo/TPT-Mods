@@ -1,12 +1,12 @@
 function clamp(value,min,max)
 
-if value>max then
+if value > max the
 
 return max
 
 end
 
-if value<min then
+if value < min then
 
 return min
 
