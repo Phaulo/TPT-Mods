@@ -1,3 +1,20 @@
+function clamp(value,min,max)
+
+if value>max then
+
+return max
+
+end
+
+if value<min then
+
+return min
+
+end
+
+return value
+
+end
 
 local function solid(posx,posy,elemtype)
     local x = posx or 0
