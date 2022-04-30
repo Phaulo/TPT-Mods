@@ -1,6 +1,6 @@
 function clamp(value,min,max)
 
-if value > max the
+if value > max then
 
 return max
 
