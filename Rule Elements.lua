@@ -93,9 +93,9 @@ local update = function(i,x,y,s,w)
    for ry = 0,def.rule.height-1,1 do
     local element
     if ready then
-     if tpt.get_property("type",x+rx,y+ry) == 0 then
+     if tpt.get_property("type",x+rx,y+ry) == 0 or def.create_like_wall then
       if def.rule.table[ry+1][rx+1] >= 1 then
-       element = tpt.empty_create(x+rx,y+ry,element1)
+       element = (def.create_like_wall and tpt.delete_create or tpt.empty_create)(x+rx,y+ry,element1)
       end
      end
     end
@@ -133,6 +133,8 @@ tpt.register_rule_element("LOVE",{
   }
  })
 tpt.register_rule_element("WALL",{
+		create_like_wall = true,
+	
  	allocate = {
  		group = "BASIC",
   	name = "WALL"
